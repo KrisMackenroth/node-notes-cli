@@ -14,3 +14,9 @@ fs.writeFile('./data.json', JSON.stringify(json, null, 2), err => {
   if (err) throw err;
 })
 }
+
+if (process.argv[2] === 'delete') {
+for (var x in json.notes) {
+  if (x === process.argv[3])
+}
+}

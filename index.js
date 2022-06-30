@@ -1,22 +1,13 @@
 const fs = require('fs');
-
 const json = require('./data.json');
-
 if (process.argv[2] === 'read') {
-
   for (var x in json.notes) {
-    console.log(`${x}: ${json.notes[x]}`);
+    console.log(JSON.stringify(json.notes[x], null, 2));
   }
 }
-
-
-
-const notes = process.argv[3];
-
-if (process.argv[2] === 'create') {
-fs.writeFile('data.json', JSON.stringify(notes, null, 2), err => {
-  if (err) {
-    console.error(err);
-  }
-});
-}
+json.notes[json.nextId] = JSON.stringify(5, null, 2)
+console.log(json.notes[json.nextId]);
+//json.notes[json.nextId] = JSON.stringify(process.argv[2], null, 2)
+fs.writeFile('./data.json', JSON.stringify(json.notes, null, 2), err => {
+  if (err) throw err;
+})

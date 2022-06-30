@@ -4,7 +4,8 @@ const json = require('./data.json');
 
 if (process.argv[2] === 'read') {
 
-  for (var i = 1; i < 5; i++) {
-  console.log(JSON.stringify(json.notes[i], null, 2));
+  for (var x in json.notes) {
+    console.log(JSON.stringify(json.notes[x], null, 2));
   }
 }
+//console.log(JSON.stringify(JSON.stringify(json.notes, null, 2)));

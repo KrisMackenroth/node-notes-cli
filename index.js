@@ -15,8 +15,24 @@ fs.writeFile('./data.json', JSON.stringify(json, null, 2), err => {
 })
 }
 
-if (process.argv[2] === 'delete') {
+if (process.argv[2] === 'update') {
 for (var x in json.notes) {
-  if (x === process.argv[3])
+  if (x === process.argv[3]) {
+    json.notes[x] = process.argv[4];
+    fs.writeFile('./data.json', JSON.stringify(json, null, 2), err => {
+      if (err) throw err;
+    })
+  }
 }
+}
+
+if (process.argv[2] === 'delete') {
+  for (var x in json.notes) {
+    if (x === process.argv[3]) {
+      delete json.notes[x];
+      fs.writeFile('./data.json', JSON.stringify(json, null, 2), err => {
+        if (err) throw err;
+      })
+    }
+  }
 }
